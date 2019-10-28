@@ -20,8 +20,8 @@ class App extends Component {
   }
 
   formSubmit = (term) => {
-    if (term === ""){
-      this.setState({term: "happy"})
+    if (term === "") {
+      this.setState({ term: "happy" })
     } else {
       this.setState({ term })
     }
@@ -39,9 +39,8 @@ class App extends Component {
     this.setState({ selectedEmoji: "" })
   }
 
-  render() {
-
-    let emojiListRendered = emojiList.map((emoji) => {
+  emojiListRendered(){
+    return emojiList.map((emoji) => {
       let emojiKeywordsArray = emoji.keywords.split(" ");
       let emojiKeywordsArrayFiltered = [];
       for (let word of emojiKeywordsArray) {
@@ -53,11 +52,14 @@ class App extends Component {
         if (word === this.state.term) {
           return (
             <CopyToClipboard text={emoji.symbol} key={emoji.title}>
-              <ul onClick={() => this.onEmojiSelect(emoji.symbol)} className="list-group">
-                <li data-key={emoji.title} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} className="list-group-item my-1">{emoji.symbol}
-                  <span className="float-right">{this.state.selectedEmoji === emoji.title ? "click to copy" : ""}</span>
-                </li>
-              </ul>
+              <li
+                className="list-group-item my-1"
+                data-key={emoji.title}
+                onClick={() => this.onEmojiSelect(emoji.symbol)}
+                onMouseEnter={this.handleMouseEnter}
+                onMouseLeave={this.handleMouseLeave}>{emoji.symbol}
+                <span className="float-right">{this.state.selectedEmoji === emoji.title ? "click to copy" : ""}</span>
+              </li>
             </CopyToClipboard>
           )
         }
@@ -65,14 +67,16 @@ class App extends Component {
       })
       )
     })
+  }
 
+  render() {
     return (
       <div className="container">
         <h1 className="text-center">Emoji Search</h1>
         <div className="row my-3">
           <div className="col">
             <Search formSubmit={this.formSubmit} />
-            <List emojiListRendered={emojiListRendered} />
+            <List emojiListRendered={this.emojiListRendered()} />
           </div>
         </div>
       </div>

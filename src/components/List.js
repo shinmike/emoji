@@ -1,9 +1,11 @@
 import React from 'react';
 
-const List = ({emojiListRendered}) => {
+const List = ({ emojiListRendered }) => {
   return (
     <div>
-      {emojiListRendered}
+      <ul className="list-group">
+        {emojiListRendered}
+      </ul>
     </div>
   )
 }
