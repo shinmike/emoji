@@ -67,13 +67,11 @@ class App extends Component {
     })
 
     return (
-      <div className="container-fluid">
+      <div className="container">
         <h1 className="text-center">Emoji Search</h1>
         <div className="row my-3">
-          <div className="col-md-4">
+          <div className="col">
             <Search formSubmit={this.formSubmit} />
-          </div>
-          <div className="col-md-8">
             <List emojiListRendered={emojiListRendered} />
           </div>
         </div>
