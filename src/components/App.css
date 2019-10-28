@@ -1,0 +1,7 @@
+ul {
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: lightcyan;
+}
